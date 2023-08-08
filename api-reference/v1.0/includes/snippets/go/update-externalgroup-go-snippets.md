@@ -4,17 +4,24 @@ description: "Automatically generated file. DO NOT MODIFY"
 
 ```go
 
-//THE GO SDK IS IN PREVIEW. NON-PRODUCTION USE ONLY
-graphClient := msgraphsdk.NewGraphServiceClient(requestAdapter)
 
-requestBody := msgraphsdk.NewExternalGroup()
+import (
+	  "context"
+	  msgraphsdk "github.com/microsoftgraph/msgraph-sdk-go"
+	  graphmodelsexternalconnectors "github.com/microsoftgraph/msgraph-sdk-go/models/externalconnectors"
+	  //other-imports
+)
+
+graphClient := msgraphsdk.NewGraphServiceClientWithCredentials(cred, scopes)
+
+
+requestBody := graphmodelsexternalconnectors.NewExternalGroup()
 displayName := "Contoso Marketing"
-requestBody.SetDisplayName(&displayName)
+requestBody.SetDisplayName(&displayName) 
 description := "The product marketing team"
-requestBody.SetDescription(&description)
-externalConnectionId := "externalConnection-id"
-externalGroupId := "externalGroup-id"
-graphClient.External().ConnectionsById(&externalConnectionId).GroupsById(&externalGroupId).Patch(requestBody)
+requestBody.SetDescription(&description) 
+
+groups, err := graphClient.External().Connections().ByExternalConnectionId("externalConnection-id").Groups().ByExternalGroupId("externalGroup-id").Patch(context.Background(), requestBody, nil)
 
 
 ```

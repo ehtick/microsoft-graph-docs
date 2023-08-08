@@ -4,15 +4,26 @@ description: "Automatically generated file. DO NOT MODIFY"
 
 ```go
 
-//THE GO SDK IS IN PREVIEW. NON-PRODUCTION USE ONLY
-graphClient := msgraphsdk.NewGraphServiceClient(requestAdapter)
 
-requestBody := msgraphsdk.NewAuthorizationPolicy()
-defaultUserRolePermissions := msgraphsdk.NewDefaultUserRolePermissions()
-requestBody.SetDefaultUserRolePermissions(defaultUserRolePermissions)
-defaultUserRolePermissions.SetPermissionGrantPoliciesAssigned( []string {
+import (
+	  "context"
+	  msgraphsdk "github.com/microsoftgraph/msgraph-sdk-go"
+	  graphmodels "github.com/microsoftgraph/msgraph-sdk-go/models"
+	  //other-imports
+)
+
+graphClient := msgraphsdk.NewGraphServiceClientWithCredentials(cred, scopes)
+
+
+requestBody := graphmodels.NewAuthorizationPolicy()
+defaultUserRolePermissions := graphmodels.NewDefaultUserRolePermissions()
+permissionGrantPoliciesAssigned := []string {
+
 }
-graphClient.Policies().AuthorizationPolicy().Patch(requestBody)
+defaultUserRolePermissions.SetPermissionGrantPoliciesAssigned(permissionGrantPoliciesAssigned)
+requestBody.SetDefaultUserRolePermissions(defaultUserRolePermissions)
+
+authorizationPolicy, err := graphClient.Policies().AuthorizationPolicy().Patch(context.Background(), requestBody, nil)
 
 
 ```

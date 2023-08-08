@@ -4,11 +4,18 @@ description: "Automatically generated file. DO NOT MODIFY"
 
 ```go
 
-//THE GO SDK IS IN PREVIEW. NON-PRODUCTION USE ONLY
-graphClient := msgraphsdk.NewGraphServiceClient(requestAdapter)
 
-unifiedRoleDefinitionId := "unifiedRoleDefinition-id"
-result, err := graphClient.RoleManagement().EntitlementManagement().RoleDefinitionsById(&unifiedRoleDefinitionId).Get()
+import (
+	  "context"
+	  msgraphsdk "github.com/microsoftgraph/msgraph-beta-sdk-go"
+	  //other-imports
+)
+
+graphClient := msgraphsdk.NewGraphServiceClientWithCredentials(cred, scopes)
+
+
+
+roleDefinitions, err := graphClient.RoleManagement().EntitlementManagement().RoleDefinitions().ByUnifiedRoleDefinitionId("unifiedRoleDefinition-id").Get(context.Background(), nil)
 
 
 ```

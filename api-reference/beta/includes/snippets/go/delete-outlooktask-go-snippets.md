@@ -4,11 +4,18 @@ description: "Automatically generated file. DO NOT MODIFY"
 
 ```go
 
-//THE GO SDK IS IN PREVIEW. NON-PRODUCTION USE ONLY
-graphClient := msgraphsdk.NewGraphServiceClient(requestAdapter)
 
-outlookTaskId := "outlookTask-id"
-graphClient.Me().Outlook().TasksById(&outlookTaskId).Delete()
+import (
+	  "context"
+	  msgraphsdk "github.com/microsoftgraph/msgraph-beta-sdk-go"
+	  //other-imports
+)
+
+graphClient := msgraphsdk.NewGraphServiceClientWithCredentials(cred, scopes)
+
+
+
+graphClient.Me().Outlook().Tasks().ByOutlookTaskId("outlookTask-id").Delete(context.Background(), nil)
 
 
 ```

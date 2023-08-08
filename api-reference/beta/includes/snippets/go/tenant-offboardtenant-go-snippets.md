@@ -4,11 +4,18 @@ description: "Automatically generated file. DO NOT MODIFY"
 
 ```go
 
-//THE GO SDK IS IN PREVIEW. NON-PRODUCTION USE ONLY
-graphClient := msgraphsdk.NewGraphServiceClient(requestAdapter)
 
-tenantId := "tenant-id"
-result, err := graphClient.TenantRelationships().ManagedTenants().TenantsById(&tenantId).OffboardTenant(tenant-id).Post()
+import (
+	  "context"
+	  msgraphsdk "github.com/microsoftgraph/msgraph-beta-sdk-go"
+	  //other-imports
+)
+
+graphClient := msgraphsdk.NewGraphServiceClientWithCredentials(cred, scopes)
+
+
+
+microsoft.graph.managedTenants.offboardTenant, err := graphClient.TenantRelationships().ManagedTenants().Tenants().ByTenantId("tenant-id").MicrosoftGraphManagedTenantsOffboardTenant().Post(context.Background(), nil)
 
 
 ```

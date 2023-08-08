@@ -4,12 +4,18 @@ description: "Automatically generated file. DO NOT MODIFY"
 
 ```go
 
-//THE GO SDK IS IN PREVIEW. NON-PRODUCTION USE ONLY
-graphClient := msgraphsdk.NewGraphServiceClient(requestAdapter)
 
-callId := "call-id"
-audioRoutingGroupId := "audioRoutingGroup-id"
-result, err := graphClient.Communications().CallsById(&callId).AudioRoutingGroupsById(&audioRoutingGroupId).Get()
+import (
+	  "context"
+	  msgraphsdk "github.com/microsoftgraph/msgraph-beta-sdk-go"
+	  //other-imports
+)
+
+graphClient := msgraphsdk.NewGraphServiceClientWithCredentials(cred, scopes)
+
+
+
+audioRoutingGroups, err := graphClient.Communications().Calls().ByCallId("call-id").AudioRoutingGroups().ByAudioRoutingGroupId("audioRoutingGroup-id").Get(context.Background(), nil)
 
 
 ```

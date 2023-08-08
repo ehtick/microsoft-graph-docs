@@ -61,24 +61,40 @@ Here is an example of the request to access a permission on a folder.
 ```msgraph-interactive
 GET /me/drive/items/{item-id}/permissions/{perm-id}
 ```
+
 # [C#](#tab/csharp)
 [!INCLUDE [sample-code](../includes/snippets/csharp/get-item-permission-csharp-snippets.md)]
 [!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
 
-# [JavaScript](#tab/javascript)
-[!INCLUDE [sample-code](../includes/snippets/javascript/get-item-permission-javascript-snippets.md)]
+# [CLI](#tab/cli)
+[!INCLUDE [sample-code](../includes/snippets/cli/get-item-permission-cli-snippets.md)]
 [!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
 
-# [Objective-C](#tab/objc)
-[!INCLUDE [sample-code](../includes/snippets/objc/get-item-permission-objc-snippets.md)]
+# [Go](#tab/go)
+[!INCLUDE [sample-code](../includes/snippets/go/get-item-permission-go-snippets.md)]
 [!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
 
 # [Java](#tab/java)
 [!INCLUDE [sample-code](../includes/snippets/java/get-item-permission-java-snippets.md)]
 [!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
 
----
+# [JavaScript](#tab/javascript)
+[!INCLUDE [sample-code](../includes/snippets/javascript/get-item-permission-javascript-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
 
+# [PHP](#tab/php)
+[!INCLUDE [sample-code](../includes/snippets/php/get-item-permission-php-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [PowerShell](#tab/powershell)
+[!INCLUDE [sample-code](../includes/snippets/powershell/get-item-permission-powershell-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [Python](#tab/python)
+[!INCLUDE [sample-code](../includes/snippets/python/get-item-permission-python-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+---
 
 ### Response
 

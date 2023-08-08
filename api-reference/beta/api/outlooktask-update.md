@@ -86,7 +86,8 @@ The following example modifies the **dueDateTime** property and uses the `Prefer
 # [HTTP](#tab/http)
 <!-- {
   "blockType": "request",
-  "name": "update_outlooktask"
+  "name": "update_outlooktask",
+  "sampleKeys": ["AAMkADA1MTHgwAAA="]
 }-->
 
 ```http
@@ -101,32 +102,36 @@ Content-type: application/json
   }
 }
 ```
+
 # [C#](#tab/csharp)
 [!INCLUDE [sample-code](../includes/snippets/csharp/update-outlooktask-csharp-snippets.md)]
-[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
-
-# [JavaScript](#tab/javascript)
-[!INCLUDE [sample-code](../includes/snippets/javascript/update-outlooktask-javascript-snippets.md)]
-[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
-
-# [Objective-C](#tab/objc)
-[!INCLUDE [sample-code](../includes/snippets/objc/update-outlooktask-objc-snippets.md)]
-[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
-
-# [Java](#tab/java)
-[!INCLUDE [sample-code](../includes/snippets/java/update-outlooktask-java-snippets.md)]
 [!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
 
 # [Go](#tab/go)
 [!INCLUDE [sample-code](../includes/snippets/go/update-outlooktask-go-snippets.md)]
 [!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
 
+# [Java](#tab/java)
+[!INCLUDE [sample-code](../includes/snippets/java/update-outlooktask-java-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [JavaScript](#tab/javascript)
+[!INCLUDE [sample-code](../includes/snippets/javascript/update-outlooktask-javascript-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [PHP](#tab/php)
+[!INCLUDE [sample-code](../includes/snippets/php/update-outlooktask-php-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
 # [PowerShell](#tab/powershell)
 [!INCLUDE [sample-code](../includes/snippets/powershell/update-outlooktask-powershell-snippets.md)]
 [!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
 
----
+# [Python](#tab/python)
+[!INCLUDE [sample-code](../includes/snippets/python/update-outlooktask-python-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
 
+---
 
 ### Response
 
@@ -186,6 +191,12 @@ Content-type: application/json
   "section": "documentation",
   "tocPath": "",
   "suppressions": [
+    "Error: microsoft.graph.microsoft.graph/me:
+      /me/outlook/tasks/{var}/attachments
+      Uri path requires navigating into unknown object hierarchy: missing property 'tasks' on 'outlookUser'. Possible issues:
+  	 1) Doc bug where 'tasks' isn't defined on the resource.
+  	 2) Doc bug where 'tasks' is an example key and should instead be replaced with a placeholder like {item-id} or declared in the sampleKeys annotation.
+  	 3) Doc bug where 'outlookUser' is supposed to be an entity type, but is being treated as a complex because it (and its ancestors) are missing the keyProperty annotation."
   ]
 }
 -->

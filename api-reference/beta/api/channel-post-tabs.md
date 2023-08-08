@@ -21,9 +21,9 @@ One of the following permissions is required to call this API. To learn more, in
 
 |Permission type      | Permissions (from least to most privileged)              |
 |:--------------------|:---------------------------------------------------------|
-|Delegated (work or school account) | TeamsTab.Create, TeamsTab.ReadWriteForTeam, TeamsTab.ReadWrite.All, Group.ReadWrite.All**, Directory.ReadWrite.All** |
+|Delegated (work or school account) | TeamsTab.Create, TeamsTab.ReadWriteSelfForTeam, TeamsTab.ReadWriteForTeam, TeamsTab.ReadWrite.All, Group.ReadWrite.All**, Directory.ReadWrite.All** |
 |Delegated (personal Microsoft account) | Not supported.    |
-| Application   | TeamsTab.Create.Group*, TeamsTab.Create, TeamsTab.ReadWriteForTeam.All, TeamsTab.ReadWrite.All, Group.ReadWrite.All**, Directory.ReadWrite.All** |
+| Application   | TeamsTab.Create.Group*, TeamsTab.Create, TeamsTab.ReadWriteSelfForTeam.All, TeamsTab.ReadWriteForTeam.All, TeamsTab.ReadWrite.All, Group.ReadWrite.All**, Directory.ReadWrite.All** |
 
 [!INCLUDE [teamwork-permissions-note](../../../includes/teamwork-permissions-note.md)]
 
@@ -103,6 +103,7 @@ Content-type: application/json
 
 - [Configuring the buit-in tab types](/graph/teams-configuring-builtin-tabs)
 - [Add app to team](team-post-installedapps.md)
+- [Microsoft Graph service-specific throttling limits](/graph/throttling-limits#microsoft-teams-service-limits)
 
 
 <!-- uuid: 8fcb5dbc-d5aa-4681-8e31-b001d5168d79
@@ -117,5 +118,4 @@ Content-type: application/json
   "suppressions": []
 }
 -->
-
 

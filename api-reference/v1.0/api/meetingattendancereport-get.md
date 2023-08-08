@@ -1,7 +1,7 @@
 ---
 title: "Get meetingAttendanceReport"
 description: "Get the attendance report for an online meeting."
-author: "mkhribech"
+author: "awang119"
 ms.localizationpriority: medium
 ms.prod: "cloud-communications"
 doc_type: apiPageType
@@ -44,6 +44,11 @@ GET /users/{userId}/onlineMeetings/{meetingId}/attendanceReports/{reportId}
 >- `userId` is the object ID of a user in [Azure user management portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade). For more details, see [Allow applications to access online meetings on behalf of a user](/graph/cloud-communication-online-meeting-application-access-policy).
 >- `meetingId` is the **id** of an [onlineMeeting](../resources/onlinemeeting.md) object.
 >- `reportId` is the **id** of an [meetingAttendanceReport](../resources/meetingAttendanceReport.md) object.
+>- Only the meeting organizer or co-organizer can access this API.
+
+> [!CAUTION]
+>
+>- The **attendanceRecords** property does not return information about a breakout room.
 
 ## Optional query parameters
 
@@ -76,38 +81,47 @@ The following example shows how to get the attendance report for an online meeti
 # [HTTP](#tab/http)
 <!-- {
   "blockType": "request",
-  "name": "get-attendanceReport-by-id"
+  "name": "get-attendanceReport-by-id",
+  "sampleKeys": ["MSpkYzE3Njc0Yy04MWQ5LTRhZGItYmZ", "c9b6db1c-d5eb-427d-a5c0-20088d9b22d7"]
 }-->
 
 ```msgraph-interactive
 GET https://graph.microsoft.com/v1.0/me/onlineMeetings/MSpkYzE3Njc0Yy04MWQ5LTRhZGItYmZ/attendanceReports/c9b6db1c-d5eb-427d-a5c0-20088d9b22d7?$expand=attendanceRecords
 ```
+
 # [C#](#tab/csharp)
 [!INCLUDE [sample-code](../includes/snippets/csharp/get-attendancereport-by-id-csharp-snippets.md)]
 [!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
 
-# [JavaScript](#tab/javascript)
-[!INCLUDE [sample-code](../includes/snippets/javascript/get-attendancereport-by-id-javascript-snippets.md)]
-[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
-
-# [Objective-C](#tab/objc)
-[!INCLUDE [sample-code](../includes/snippets/objc/get-attendancereport-by-id-objc-snippets.md)]
-[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
-
-# [Java](#tab/java)
-[!INCLUDE [sample-code](../includes/snippets/java/get-attendancereport-by-id-java-snippets.md)]
+# [CLI](#tab/cli)
+[!INCLUDE [sample-code](../includes/snippets/cli/get-attendancereport-by-id-cli-snippets.md)]
 [!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
 
 # [Go](#tab/go)
 [!INCLUDE [sample-code](../includes/snippets/go/get-attendancereport-by-id-go-snippets.md)]
 [!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
 
+# [Java](#tab/java)
+[!INCLUDE [sample-code](../includes/snippets/java/get-attendancereport-by-id-java-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [JavaScript](#tab/javascript)
+[!INCLUDE [sample-code](../includes/snippets/javascript/get-attendancereport-by-id-javascript-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [PHP](#tab/php)
+[!INCLUDE [sample-code](../includes/snippets/php/get-attendancereport-by-id-php-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
 # [PowerShell](#tab/powershell)
 [!INCLUDE [sample-code](../includes/snippets/powershell/get-attendancereport-by-id-powershell-snippets.md)]
 [!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
 
----
+# [Python](#tab/python)
+[!INCLUDE [sample-code](../includes/snippets/python/get-attendancereport-by-id-python-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
 
+---
 
 ### Response
 

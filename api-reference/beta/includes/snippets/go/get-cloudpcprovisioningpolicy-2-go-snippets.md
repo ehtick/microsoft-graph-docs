@@ -4,17 +4,25 @@ description: "Automatically generated file. DO NOT MODIFY"
 
 ```go
 
-//THE GO SDK IS IN PREVIEW. NON-PRODUCTION USE ONLY
-graphClient := msgraphsdk.NewGraphServiceClient(requestAdapter)
 
-requestParameters := &msgraphsdk.CloudPcProvisioningPolicyRequestBuilderGetQueryParameters{
-	Expand: "assignments",
+import (
+	  "context"
+	  msgraphsdk "github.com/microsoftgraph/msgraph-beta-sdk-go"
+	  graphdevicemanagement "github.com/microsoftgraph/msgraph-beta-sdk-go/devicemanagement"
+	  //other-imports
+)
+
+graphClient := msgraphsdk.NewGraphServiceClientWithCredentials(cred, scopes)
+
+
+requestParameters := &graphdevicemanagement.DeviceManagementVirtualEndpointProvisioningPolicieItemRequestBuilderGetQueryParameters{
+	Expand: [] string {"assignments"},
 }
-options := &msgraphsdk.CloudPcProvisioningPolicyRequestBuilderGetRequestConfiguration{
+configuration := &graphdevicemanagement.DeviceManagementVirtualEndpointProvisioningPolicieItemRequestBuilderGetRequestConfiguration{
 	QueryParameters: requestParameters,
 }
-cloudPcProvisioningPolicyId := "cloudPcProvisioningPolicy-id"
-result, err := graphClient.DeviceManagement().VirtualEndpoint().ProvisioningPoliciesById(&cloudPcProvisioningPolicyId).GetWithRequestConfigurationAndResponseHandler(options, nil)
+
+provisioningPolicies, err := graphClient.DeviceManagement().VirtualEndpoint().ProvisioningPolicies().ByCloudPcProvisioningPolicyId("cloudPcProvisioningPolicy-id").Get(context.Background(), configuration)
 
 
 ```

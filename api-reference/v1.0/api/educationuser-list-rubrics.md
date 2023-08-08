@@ -2,7 +2,7 @@
 title: "List rubrics"
 description: "Retrieve a list of educationrubric objects."
 ms.localizationpriority: medium
-author: "sharad-sharma-msft"
+author: "Sureshpadimi88"
 ms.prod: "education"
 doc_type: "apiPageType"
 ---
@@ -30,6 +30,10 @@ One of the following permissions is required to call this API. To learn more, in
 ```http
 GET /education/me/rubrics
 ```
+
+## Optional query parameters
+
+This method supports the `$top`, `$filter`, `$orderBy`, and `$select` OData query parameters to help customize the response. For general information, see [OData query parameters](/graph/query-parameters).
 
 ## Request headers
 
@@ -60,32 +64,36 @@ The following is an example of the request.
 ```msgraph-interactive
 GET https://graph.microsoft.com/v1.0/education/me/rubrics
 ```
+
 # [C#](#tab/csharp)
 [!INCLUDE [sample-code](../includes/snippets/csharp/get-rubrics-csharp-snippets.md)]
 [!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
 
-# [JavaScript](#tab/javascript)
-[!INCLUDE [sample-code](../includes/snippets/javascript/get-rubrics-javascript-snippets.md)]
-[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
-
-# [Objective-C](#tab/objc)
-[!INCLUDE [sample-code](../includes/snippets/objc/get-rubrics-objc-snippets.md)]
-[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
-
-# [Java](#tab/java)
-[!INCLUDE [sample-code](../includes/snippets/java/get-rubrics-java-snippets.md)]
+# [CLI](#tab/cli)
+[!INCLUDE [sample-code](../includes/snippets/cli/get-rubrics-cli-snippets.md)]
 [!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
 
 # [Go](#tab/go)
 [!INCLUDE [sample-code](../includes/snippets/go/get-rubrics-go-snippets.md)]
 [!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
 
-# [PowerShell](#tab/powershell)
-[!INCLUDE [sample-code](../includes/snippets/powershell/get-rubrics-powershell-snippets.md)]
+# [Java](#tab/java)
+[!INCLUDE [sample-code](../includes/snippets/java/get-rubrics-java-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [JavaScript](#tab/javascript)
+[!INCLUDE [sample-code](../includes/snippets/javascript/get-rubrics-javascript-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [PHP](#tab/php)
+[!INCLUDE [sample-code](../includes/snippets/php/get-rubrics-php-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [Python](#tab/python)
+[!INCLUDE [sample-code](../includes/snippets/python/get-rubrics-python-snippets.md)]
 [!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
 
 ---
-
 
 ### Response
 

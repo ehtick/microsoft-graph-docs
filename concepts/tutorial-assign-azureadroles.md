@@ -1,12 +1,15 @@
 ---
-title: "Tutorial: Use the Privileged Identity Management (PIM) API to assign Azure AD roles"
+title: "Assign Azure AD roles through Privileged Identity Management (PIM) APIs in Microsoft Graph"
 description: "Learn how to create a role-assignable security group for IT Helpdesk and use the PIM API to assign the security group eligibility to the User Administrator role."
 author: "FaithOmbongi"
+ms.author: ombongifaith
+ms.reviewer: rianakarim
 ms.localizationpriority: medium
 ms.prod: "governance"
+ms.date: 12/20/2022
 ---
 
-# Tutorial: Use the Privileged Identity Management (PIM) API to assign Azure AD roles
+# Assign Azure AD roles through Privileged Identity Management (PIM) APIs in Microsoft Graph
 
 Microsoft Graph PIM API enables organizations to manage privileged access to resources in Azure Active Directory (Azure AD). It also helps to manage the risks of privileged access by limiting when access is active, managing the scope of access, and providing an auditable log of privileged access.
 
@@ -27,27 +30,10 @@ Assigning eligibility instead of a persistently active User Administrator privil
 To complete this tutorial, you need the following resources and privileges:
 
 + A working Azure AD tenant with an Azure AD Premium P2 or EMS E5 license enabled.
-+ Sign in to [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) as a user in a Global Administrator role.
-  + [Optional] Start a new incognito or InPrivate browser session, or start a session in an anonymous browser. You'll sign in later in this tutorial.
-+ The following delegated permissions: `User.ReadWrite.All`, `Group.ReadWrite.All`, `Directory.Read.All`, `RoleEligibilitySchedule.ReadWrite.Directory`, and `RoleAssignmentSchedule.ReadWrite.Directory`, and `RoleManagement.ReadWrite.Directory`.
++ Sign in to an API client such as [Graph Explorer](https://aka.ms/ge), Postman, or create your own client app to call Microsoft Graph. To call Microsoft Graph APIs in this tutorial, you need to use an account with the Global Administrator role.
+  + [Optional] Start a new session in another browser. You'll sign in later in this tutorial.
++ Grant yourself the following delegated permissions: `User.ReadWrite.All`, `Group.ReadWrite.All`, `Directory.Read.All`, `RoleEligibilitySchedule.ReadWrite.Directory`, and `RoleAssignmentSchedule.ReadWrite.Directory`, and `RoleManagement.ReadWrite.Directory`.
 + Authenticator app installed on your phone to register a user for multifactor authentication (MFA).
-
-To consent to the required permissions in Graph Explorer:
-1. Select the horizontal ellipses icon to the right of the user account details, and then choose **Select permissions**.
-  
-      :::image type="content" source="/graph/images/GE-Permissions/selectpermissions.png" alt-text="Select Microsoft Graph permissions." border="true":::
-
-2. Scroll through the list of permissions to these permissions:
-    + Group (2), expand and then select **Group.ReadWrite.All**.
-    + Directory (4), expand and then select **Directory.Read.All**.
-    + RoleAssignmentSchedule (2), expand and then select **RoleAssignmentSchedule.ReadWrite.Directory**.
-    + RoleEligibilitySchedule (2), expand and then select **RoleEligibilitySchedule.ReadWrite.Directory**.
-    + RoleManagement (3), expand and then select **RoleManagement.ReadWrite.Directory**.
-    + User (8), expand and then select **User.ReadWrite.All**.
-   
-   Select **Consent**, and then select **Accept** to accept the consent of the permissions. For the `RoleEligibilitySchedule.ReadWrite.Directory` and `RoleAssignmentSchedule.ReadWrite.All` permissions, consent on behalf of your organization.
-
-      :::image type="content" source="/graph/images/GE-Permissions/User.ReadWrite.All-consent.png" alt-text="Consent to Microsoft Graph permissions." border="true":::
 
 ## Step 1: Create a test user
 
@@ -56,6 +42,8 @@ Create a user who must reset their password at first sign in. From this step, re
 
 ### Request
 
+
+# [HTTP](#tab/http)
 <!-- {
   "blockType": "request",
   "name": "tutorial-assignaadroles-createUser"
@@ -75,6 +63,40 @@ Content-Type: application/json
     }
 }
 ```
+
+# [C#](#tab/csharp)
+[!INCLUDE [sample-code](../includes/snippets/csharp/v1/tutorial-assignaadroles-createuser-csharp-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [CLI](#tab/cli)
+[!INCLUDE [sample-code](../includes/snippets/cli/v1/tutorial-assignaadroles-createuser-cli-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [Go](#tab/go)
+[!INCLUDE [sample-code](../includes/snippets/go/v1/tutorial-assignaadroles-createuser-go-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [Java](#tab/java)
+[!INCLUDE [sample-code](../includes/snippets/java/v1/tutorial-assignaadroles-createuser-java-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [JavaScript](#tab/javascript)
+[!INCLUDE [sample-code](../includes/snippets/javascript/v1/tutorial-assignaadroles-createuser-javascript-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [PHP](#tab/php)
+[!INCLUDE [sample-code](../includes/snippets/php/v1/tutorial-assignaadroles-createuser-php-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [PowerShell](#tab/powershell)
+[!INCLUDE [sample-code](../includes/snippets/powershell/v1/tutorial-assignaadroles-createuser-powershell-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [Python](#tab/python)
+[!INCLUDE [sample-code](../includes/snippets/python/v1/tutorial-assignaadroles-createuser-python-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+---
 
 ### Response
 
@@ -104,6 +126,8 @@ Create a group that’s assignable to an Azure AD role. Assign yourself as the g
 
 Replace `1ed8ac56-4827-4733-8f80-86adc2e67db5` with your ID and `7146daa8-1b4b-4a66-b2f7-cf593d03c8d2` with the value of Aline's ID.
 
+
+# [HTTP](#tab/http)
 <!-- {
   "blockType": "request",
   "name": "tutorial-assignaadroles-createSecurityGroup"
@@ -128,6 +152,40 @@ Content-type: application/json
     ]
 }
 ```
+
+# [C#](#tab/csharp)
+[!INCLUDE [sample-code](../includes/snippets/csharp/v1/tutorial-assignaadroles-createsecuritygroup-csharp-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [CLI](#tab/cli)
+[!INCLUDE [sample-code](../includes/snippets/cli/v1/tutorial-assignaadroles-createsecuritygroup-cli-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [Go](#tab/go)
+[!INCLUDE [sample-code](../includes/snippets/go/v1/tutorial-assignaadroles-createsecuritygroup-go-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [Java](#tab/java)
+[!INCLUDE [sample-code](../includes/snippets/java/v1/tutorial-assignaadroles-createsecuritygroup-java-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [JavaScript](#tab/javascript)
+[!INCLUDE [sample-code](../includes/snippets/javascript/v1/tutorial-assignaadroles-createsecuritygroup-javascript-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [PHP](#tab/php)
+[!INCLUDE [sample-code](../includes/snippets/php/v1/tutorial-assignaadroles-createsecuritygroup-php-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [PowerShell](#tab/powershell)
+[!INCLUDE [sample-code](../includes/snippets/powershell/v1/tutorial-assignaadroles-createsecuritygroup-powershell-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [Python](#tab/python)
+[!INCLUDE [sample-code](../includes/snippets/python/v1/tutorial-assignaadroles-createsecuritygroup-python-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+---
 
 ### Response
 
@@ -168,6 +226,8 @@ Now that you have a security group, assign it as eligible for the User Administr
 
 Replace `e77cbb23-0ff2-4e18-819c-690f58269752` with the value of the **id** of the **IT Helpdesk (User)** security group. This **principalId** identifies the assignee of eligibility to the User Administrator role. The roleDefinitionId `fe930be7-5e62-47db-91af-98c3a49a38b1` is the global template identifier for the User Administrator role in Azure AD.
 
+
+# [HTTP](#tab/http)
 <!-- {
   "blockType": "request",
   "name": "tutorial-assignaadroles-unifiedRoleEligibilityScheduleRequest_create"
@@ -191,6 +251,40 @@ Content-type: application/json
     }
 }
 ```
+
+# [C#](#tab/csharp)
+[!INCLUDE [sample-code](../includes/snippets/csharp/v1/tutorial-assignaadroles-unifiedroleeligibilityschedulerequest-create-csharp-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [CLI](#tab/cli)
+[!INCLUDE [sample-code](../includes/snippets/cli/v1/tutorial-assignaadroles-unifiedroleeligibilityschedulerequest-create-cli-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [Go](#tab/go)
+[!INCLUDE [sample-code](../includes/snippets/go/v1/tutorial-assignaadroles-unifiedroleeligibilityschedulerequest-create-go-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [Java](#tab/java)
+[!INCLUDE [sample-code](../includes/snippets/java/v1/tutorial-assignaadroles-unifiedroleeligibilityschedulerequest-create-java-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [JavaScript](#tab/javascript)
+[!INCLUDE [sample-code](../includes/snippets/javascript/v1/tutorial-assignaadroles-unifiedroleeligibilityschedulerequest-create-javascript-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [PHP](#tab/php)
+[!INCLUDE [sample-code](../includes/snippets/php/v1/tutorial-assignaadroles-unifiedroleeligibilityschedulerequest-create-php-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [PowerShell](#tab/powershell)
+[!INCLUDE [sample-code](../includes/snippets/powershell/v1/tutorial-assignaadroles-unifiedroleeligibilityschedulerequest-create-powershell-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [Python](#tab/python)
+[!INCLUDE [sample-code](../includes/snippets/python/v1/tutorial-assignaadroles-unifiedroleeligibilityschedulerequest-create-python-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+---
 
 ### Response
 
@@ -241,6 +335,8 @@ While the group members are now eligible for the User Administrator role, they'r
 
 In the following request, replace `7146daa8-1b4b-4a66-b2f7-cf593d03c8d2` with the value of Aline's **id**.
 
+
+# [HTTP](#tab/http)
 <!-- {
   "blockType": "request",
   "name": "tutorial-assignaadroles-roleAssignments_list"
@@ -248,6 +344,40 @@ In the following request, replace `7146daa8-1b4b-4a66-b2f7-cf593d03c8d2` with th
 ```msgraph-interactive
 GET https://graph.microsoft.com/v1.0/roleManagement/directory/roleAssignments?$filter=principalId eq '7146daa8-1b4b-4a66-b2f7-cf593d03c8d2'
 ```
+
+# [C#](#tab/csharp)
+[!INCLUDE [sample-code](../includes/snippets/csharp/v1/tutorial-assignaadroles-roleassignments-list-csharp-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [CLI](#tab/cli)
+[!INCLUDE [sample-code](../includes/snippets/cli/v1/tutorial-assignaadroles-roleassignments-list-cli-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [Go](#tab/go)
+[!INCLUDE [sample-code](../includes/snippets/go/v1/tutorial-assignaadroles-roleassignments-list-go-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [Java](#tab/java)
+[!INCLUDE [sample-code](../includes/snippets/java/v1/tutorial-assignaadroles-roleassignments-list-java-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [JavaScript](#tab/javascript)
+[!INCLUDE [sample-code](../includes/snippets/javascript/v1/tutorial-assignaadroles-roleassignments-list-javascript-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [PHP](#tab/php)
+[!INCLUDE [sample-code](../includes/snippets/php/v1/tutorial-assignaadroles-roleassignments-list-php-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [PowerShell](#tab/powershell)
+[!INCLUDE [sample-code](../includes/snippets/powershell/v1/tutorial-assignaadroles-roleassignments-list-powershell-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [Python](#tab/python)
+[!INCLUDE [sample-code](../includes/snippets/python/v1/tutorial-assignaadroles-roleassignments-list-python-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+---
 
 ### Response
 
@@ -274,7 +404,7 @@ An incident ticket CONTOSO: Security-012345 has been raised in Contoso's inciden
 
 First, start the Authenticator app on your phone and open Aline Dupuy's account.
 
-Sign in to Graph Explorer as Aline. You may use an incognito session or an anonymous browser for this step. By doing so, you won't interrupt your current session as a user in the Global Administrator role. Alternatively, you can interrupt your current session by signing out of Graph Explorer and signing back in as Aline.
+Sign in to Graph Explorer as Aline. You may use the another browser for this step. By doing so, you won't interrupt your current session as a user in the Global Administrator role. Alternatively, you can interrupt your current session by signing out of Graph Explorer and signing back in as Aline.
 
 Signed in as Aline, you'll first change your password because this was specified during account creation. Then, because the administrator configured your account for MFA, you'll be prompted to set up your account in the Authenticator app and be challenged for MFA sign-in. This is because PIM requires that MFA for all active role assignments.
 
@@ -288,6 +418,8 @@ To activate a role, call the `roleAssignmentScheduleRequests` endpoint. In this 
 + The **roleDefinitionId** is the **id** of the role you're eligible for, in this case, the User Administrator role.
 + Enter the details of the ticket system that provides an auditable justification for activating the request.
 
+
+# [HTTP](#tab/http)
 <!-- {
   "blockType": "request",
   "name": "tutorial-assignaadroles-roleAssignmentScheduleRequests_selfActivate"
@@ -315,6 +447,40 @@ Content-type: application/json
     }
 }
 ```
+
+# [C#](#tab/csharp)
+[!INCLUDE [sample-code](../includes/snippets/csharp/v1/tutorial-assignaadroles-roleassignmentschedulerequests-selfactivate-csharp-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [CLI](#tab/cli)
+[!INCLUDE [sample-code](../includes/snippets/cli/v1/tutorial-assignaadroles-roleassignmentschedulerequests-selfactivate-cli-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [Go](#tab/go)
+[!INCLUDE [sample-code](../includes/snippets/go/v1/tutorial-assignaadroles-roleassignmentschedulerequests-selfactivate-go-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [Java](#tab/java)
+[!INCLUDE [sample-code](../includes/snippets/java/v1/tutorial-assignaadroles-roleassignmentschedulerequests-selfactivate-java-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [JavaScript](#tab/javascript)
+[!INCLUDE [sample-code](../includes/snippets/javascript/v1/tutorial-assignaadroles-roleassignmentschedulerequests-selfactivate-javascript-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [PHP](#tab/php)
+[!INCLUDE [sample-code](../includes/snippets/php/v1/tutorial-assignaadroles-roleassignmentschedulerequests-selfactivate-php-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [PowerShell](#tab/powershell)
+[!INCLUDE [sample-code](../includes/snippets/powershell/v1/tutorial-assignaadroles-roleassignmentschedulerequests-selfactivate-powershell-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [Python](#tab/python)
+[!INCLUDE [sample-code](../includes/snippets/python/v1/tutorial-assignaadroles-roleassignmentschedulerequests-selfactivate-python-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+---
 
 ### Response
 
@@ -375,6 +541,8 @@ Sign in as the Global Administrator and delete the following resources that you 
 
 Replace `e77cbb23-0ff2-4e18-819c-690f58269752` with the **id** of IT Support (Users) group.
 
+
+# [HTTP](#tab/http)
 <!-- {
   "blockType": "request",
   "name": "tutorial-assignaadroles-roleEligibilityScheduleRequests_revoke"
@@ -391,6 +559,40 @@ Content-type: application/json
 }
 
 ```
+
+# [C#](#tab/csharp)
+[!INCLUDE [sample-code](../includes/snippets/csharp/v1/tutorial-assignaadroles-roleeligibilityschedulerequests-revoke-csharp-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [CLI](#tab/cli)
+[!INCLUDE [sample-code](../includes/snippets/cli/v1/tutorial-assignaadroles-roleeligibilityschedulerequests-revoke-cli-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [Go](#tab/go)
+[!INCLUDE [sample-code](../includes/snippets/go/v1/tutorial-assignaadroles-roleeligibilityschedulerequests-revoke-go-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [Java](#tab/java)
+[!INCLUDE [sample-code](../includes/snippets/java/v1/tutorial-assignaadroles-roleeligibilityschedulerequests-revoke-java-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [JavaScript](#tab/javascript)
+[!INCLUDE [sample-code](../includes/snippets/javascript/v1/tutorial-assignaadroles-roleeligibilityschedulerequests-revoke-javascript-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [PHP](#tab/php)
+[!INCLUDE [sample-code](../includes/snippets/php/v1/tutorial-assignaadroles-roleeligibilityschedulerequests-revoke-php-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [PowerShell](#tab/powershell)
+[!INCLUDE [sample-code](../includes/snippets/powershell/v1/tutorial-assignaadroles-roleeligibilityschedulerequests-revoke-powershell-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [Python](#tab/python)
+[!INCLUDE [sample-code](../includes/snippets/python/v1/tutorial-assignaadroles-roleeligibilityschedulerequests-revoke-python-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+---
 
 #### Response
 
@@ -420,6 +622,8 @@ Content-type: application/json
 
 Replace `e77cbb23-0ff2-4e18-819c-690f58269752` with the **id** of IT Support (Users) group.
 
+
+# [HTTP](#tab/http)
 <!-- {
   "blockType": "request",
   "name": "tutorial-assignaadroles-group_delete"
@@ -427,6 +631,40 @@ Replace `e77cbb23-0ff2-4e18-819c-690f58269752` with the **id** of IT Support (Us
 ```msgraph-interactive
 DELETE https://graph.microsoft.com/v1.0/groups/e77cbb23-0ff2-4e18-819c-690f58269752
 ```
+
+# [C#](#tab/csharp)
+[!INCLUDE [sample-code](../includes/snippets/csharp/v1/tutorial-assignaadroles-group-delete-csharp-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [CLI](#tab/cli)
+[!INCLUDE [sample-code](../includes/snippets/cli/v1/tutorial-assignaadroles-group-delete-cli-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [Go](#tab/go)
+[!INCLUDE [sample-code](../includes/snippets/go/v1/tutorial-assignaadroles-group-delete-go-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [Java](#tab/java)
+[!INCLUDE [sample-code](../includes/snippets/java/v1/tutorial-assignaadroles-group-delete-java-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [JavaScript](#tab/javascript)
+[!INCLUDE [sample-code](../includes/snippets/javascript/v1/tutorial-assignaadroles-group-delete-javascript-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [PHP](#tab/php)
+[!INCLUDE [sample-code](../includes/snippets/php/v1/tutorial-assignaadroles-group-delete-php-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [PowerShell](#tab/powershell)
+[!INCLUDE [sample-code](../includes/snippets/powershell/v1/tutorial-assignaadroles-group-delete-powershell-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [Python](#tab/python)
+[!INCLUDE [sample-code](../includes/snippets/python/v1/tutorial-assignaadroles-group-delete-python-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+---
 
 #### Response
 
@@ -444,6 +682,8 @@ HTTP/1.1 204 No Content
 
 Replace `7146daa8-1b4b-4a66-b2f7-cf593d03c8d2` with the value of Aline's **id**.
 
+
+# [HTTP](#tab/http)
 <!-- {
   "blockType": "request",
   "name": "tutorial-assignaadroles-user_delete"
@@ -451,6 +691,40 @@ Replace `7146daa8-1b4b-4a66-b2f7-cf593d03c8d2` with the value of Aline's **id**.
 ```msgraph-interactive
 DELETE https://graph.microsoft.com/v1.0/users/7146daa8-1b4b-4a66-b2f7-cf593d03c8d2
 ```
+
+# [C#](#tab/csharp)
+[!INCLUDE [sample-code](../includes/snippets/csharp/v1/tutorial-assignaadroles-user-delete-csharp-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [CLI](#tab/cli)
+[!INCLUDE [sample-code](../includes/snippets/cli/v1/tutorial-assignaadroles-user-delete-cli-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [Go](#tab/go)
+[!INCLUDE [sample-code](../includes/snippets/go/v1/tutorial-assignaadroles-user-delete-go-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [Java](#tab/java)
+[!INCLUDE [sample-code](../includes/snippets/java/v1/tutorial-assignaadroles-user-delete-java-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [JavaScript](#tab/javascript)
+[!INCLUDE [sample-code](../includes/snippets/javascript/v1/tutorial-assignaadroles-user-delete-javascript-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [PHP](#tab/php)
+[!INCLUDE [sample-code](../includes/snippets/php/v1/tutorial-assignaadroles-user-delete-php-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [PowerShell](#tab/powershell)
+[!INCLUDE [snippet-not-available](../includes/snippets/snippet-not-available.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [Python](#tab/python)
+[!INCLUDE [sample-code](../includes/snippets/python/v1/tutorial-assignaadroles-user-delete-python-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+---
 
 #### Response
 

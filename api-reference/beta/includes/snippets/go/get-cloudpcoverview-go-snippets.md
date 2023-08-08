@@ -4,11 +4,18 @@ description: "Automatically generated file. DO NOT MODIFY"
 
 ```go
 
-//THE GO SDK IS IN PREVIEW. NON-PRODUCTION USE ONLY
-graphClient := msgraphsdk.NewGraphServiceClient(requestAdapter)
 
-cloudPcOverviewTenantId := "cloudPcOverview-tenantId"
-result, err := graphClient.TenantRelationships().ManagedTenants().CloudPcsOverviewById(&cloudPcOverviewTenantId).Get()
+import (
+	  "context"
+	  msgraphsdk "github.com/microsoftgraph/msgraph-beta-sdk-go"
+	  //other-imports
+)
+
+graphClient := msgraphsdk.NewGraphServiceClientWithCredentials(cred, scopes)
+
+
+
+cloudPcsOverview, err := graphClient.TenantRelationships().ManagedTenants().CloudPcsOverview().ByCloudPcOverviewTenantId("cloudPcOverview-tenantId").Get(context.Background(), nil)
 
 
 ```

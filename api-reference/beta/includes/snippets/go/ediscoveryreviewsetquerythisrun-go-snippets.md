@@ -4,13 +4,18 @@ description: "Automatically generated file. DO NOT MODIFY"
 
 ```go
 
-//THE GO SDK IS IN PREVIEW. NON-PRODUCTION USE ONLY
-graphClient := msgraphsdk.NewGraphServiceClient(requestAdapter)
 
-ediscoveryCaseId := "ediscoveryCase-id"
-ediscoveryReviewSetId := "ediscoveryReviewSet-id"
-ediscoveryReviewSetQueryId := "ediscoveryReviewSetQuery-id"
-result, err := graphClient.Security().Cases().EdiscoveryCasesById(&ediscoveryCaseId).ReviewSetsById(&ediscoveryReviewSetId).QueriesById(&ediscoveryReviewSetQueryId).Run()(ediscoveryCase-id, ediscoveryReviewSet-id, ediscoveryReviewSetQuery-id).Get()
+import (
+	  "context"
+	  msgraphsdk "github.com/microsoftgraph/msgraph-beta-sdk-go"
+	  //other-imports
+)
+
+graphClient := msgraphsdk.NewGraphServiceClientWithCredentials(cred, scopes)
+
+
+
+microsoft.graph.security.run(), err := graphClient.Security().Cases().EdiscoveryCases().ByEdiscoveryCaseId("ediscoveryCase-id").ReviewSets().ByEdiscoveryReviewSetId("ediscoveryReviewSet-id").Queries().ByEdiscoveryReviewSetQueryId("ediscoveryReviewSetQuery-id").MicrosoftGraphSecurityRun().Get(context.Background(), nil)
 
 
 ```

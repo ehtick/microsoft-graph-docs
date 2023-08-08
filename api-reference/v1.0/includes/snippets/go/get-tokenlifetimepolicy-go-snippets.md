@@ -4,11 +4,18 @@ description: "Automatically generated file. DO NOT MODIFY"
 
 ```go
 
-//THE GO SDK IS IN PREVIEW. NON-PRODUCTION USE ONLY
-graphClient := msgraphsdk.NewGraphServiceClient(requestAdapter)
 
-tokenLifetimePolicyId := "tokenLifetimePolicy-id"
-result, err := graphClient.Policies().TokenLifetimePoliciesById(&tokenLifetimePolicyId).Get()
+import (
+	  "context"
+	  msgraphsdk "github.com/microsoftgraph/msgraph-sdk-go"
+	  //other-imports
+)
+
+graphClient := msgraphsdk.NewGraphServiceClientWithCredentials(cred, scopes)
+
+
+
+tokenLifetimePolicies, err := graphClient.Policies().TokenLifetimePolicies().ByTokenLifetimePolicyId("tokenLifetimePolicy-id").Get(context.Background(), nil)
 
 
 ```

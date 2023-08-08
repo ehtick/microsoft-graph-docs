@@ -4,16 +4,24 @@ description: "Automatically generated file. DO NOT MODIFY"
 
 ```go
 
-//THE GO SDK IS IN PREVIEW. NON-PRODUCTION USE ONLY
-graphClient := msgraphsdk.NewGraphServiceClient(requestAdapter)
 
-requestBody := msgraphsdk.NewInsightsSettings()
+import (
+	  "context"
+	  msgraphsdk "github.com/microsoftgraph/msgraph-beta-sdk-go"
+	  graphmodels "github.com/microsoftgraph/msgraph-beta-sdk-go/models"
+	  //other-imports
+)
+
+graphClient := msgraphsdk.NewGraphServiceClientWithCredentials(cred, scopes)
+
+
+requestBody := graphmodels.NewInsightsSettings()
 isEnabledInOrganization := true
-requestBody.SetIsEnabledInOrganization(&isEnabledInOrganization)
+requestBody.SetIsEnabledInOrganization(&isEnabledInOrganization) 
 disabledForGroup := "edbfe4fb-ec70-4300-928f-dbb2ae86c981"
-requestBody.SetDisabledForGroup(&disabledForGroup)
-organizationId := "organization-id"
-graphClient.OrganizationById(&organizationId).Settings().PeopleInsights().Patch(requestBody)
+requestBody.SetDisabledForGroup(&disabledForGroup) 
+
+peopleInsights, err := graphClient.Organization().ByOrganizationId("organization-id").Settings().PeopleInsights().Patch(context.Background(), requestBody, nil)
 
 
 ```

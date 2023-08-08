@@ -4,12 +4,18 @@ description: "Automatically generated file. DO NOT MODIFY"
 
 ```go
 
-//THE GO SDK IS IN PREVIEW. NON-PRODUCTION USE ONLY
-graphClient := msgraphsdk.NewGraphServiceClient(requestAdapter)
 
-bookingBusinessId := "bookingBusiness-id"
-bookingStaffMemberId := "bookingStaffMember-id"
-graphClient.BookingBusinessesById(&bookingBusinessId).StaffMembersById(&bookingStaffMemberId).Delete()
+import (
+	  "context"
+	  msgraphsdk "github.com/microsoftgraph/msgraph-beta-sdk-go"
+	  //other-imports
+)
+
+graphClient := msgraphsdk.NewGraphServiceClientWithCredentials(cred, scopes)
+
+
+
+graphClient.BookingBusinesses().ByBookingBusinessId("bookingBusiness-id").StaffMembers().ByBookingStaffMemberId("bookingStaffMember-id").Delete(context.Background(), nil)
 
 
 ```

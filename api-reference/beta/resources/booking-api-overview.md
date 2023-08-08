@@ -22,7 +22,7 @@ Programmatically, a [bookingBusiness](bookingbusiness.md) in the Bookings API in
 
 ## Using the Bookings REST API
 
-Walk through the following steps before booking customer appointments for a business the first time. Make sure you provide the appropriate [access tokens](/graph/auth-overview) for the corresponding operations.
+Walk through the following steps before booking customer appointments for a business the first time. Make sure you provide the appropriate [access tokens](/graph/auth/) for the corresponding operations.
 
 1. Make sure the business has an [Microsoft 365 Business Premium](https://products.office.com/business/office-365-business-premium) subscription.
 2. Create a new **bookingBusiness** by sending a POST operation to the entity set. At minimum, you should specify a name for the new business that customers will see:
@@ -97,7 +97,6 @@ Find out about the [latest new features and updates](/graph/whats-new-overview) 
 ## See also
 
 - Try the API in the [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer).
-- See [how some of our partners are using Microsoft Graph](https://developer.microsoft.com/graph/partners).
 - Learn how to choose [permissions](/graph/permissions-reference) in Microsoft Graph.
 
 

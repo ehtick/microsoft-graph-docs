@@ -4,17 +4,22 @@ description: "Automatically generated file. DO NOT MODIFY"
 
 ```go
 
-//THE GO SDK IS IN PREVIEW. NON-PRODUCTION USE ONLY
-graphClient := msgraphsdk.NewGraphServiceClient(requestAdapter)
 
-requestBody := msgraphsdk.NewIdentityProviderBase()
+import (
+	  "context"
+	  msgraphsdk "github.com/microsoftgraph/msgraph-beta-sdk-go"
+	  graphmodels "github.com/microsoftgraph/msgraph-beta-sdk-go/models"
+	  //other-imports
+)
+
+graphClient := msgraphsdk.NewGraphServiceClientWithCredentials(cred, scopes)
+
+
+requestBody := graphmodels.NewIdentityProviderBase()
 displayName := "Apple"
-requestBody.SetDisplayName(&displayName)
-requestBody.SetAdditionalData(map[string]interface{}{
-	"@odata.type": "#microsoft.graph.socialIdentityProvider",
-}
-identityProviderBaseId := "identityProviderBase-id"
-graphClient.Identity().IdentityProvidersById(&identityProviderBaseId).Patch(requestBody)
+requestBody.SetDisplayName(&displayName) 
+
+identityProviders, err := graphClient.Identity().IdentityProviders().ByIdentityProviderBaseId("identityProviderBase-id").Patch(context.Background(), requestBody, nil)
 
 
 ```

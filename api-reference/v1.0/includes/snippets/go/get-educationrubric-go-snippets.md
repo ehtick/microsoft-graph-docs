@@ -4,11 +4,18 @@ description: "Automatically generated file. DO NOT MODIFY"
 
 ```go
 
-//THE GO SDK IS IN PREVIEW. NON-PRODUCTION USE ONLY
-graphClient := msgraphsdk.NewGraphServiceClient(requestAdapter)
 
-educationRubricId := "educationRubric-id"
-result, err := graphClient.Education().Me().RubricsById(&educationRubricId).Get()
+import (
+	  "context"
+	  msgraphsdk "github.com/microsoftgraph/msgraph-sdk-go"
+	  //other-imports
+)
+
+graphClient := msgraphsdk.NewGraphServiceClientWithCredentials(cred, scopes)
+
+
+
+rubrics, err := graphClient.Education().Me().Rubrics().ByEducationRubricId("educationRubric-id").Get(context.Background(), nil)
 
 
 ```

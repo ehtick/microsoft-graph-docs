@@ -4,12 +4,18 @@ description: "Automatically generated file. DO NOT MODIFY"
 
 ```go
 
-//THE GO SDK IS IN PREVIEW. NON-PRODUCTION USE ONLY
-graphClient := msgraphsdk.NewGraphServiceClient(requestAdapter)
 
-organizationId := "organization-id"
-certificateBasedAuthConfigurationId := "certificateBasedAuthConfiguration-id"
-result, err := graphClient.OrganizationById(&organizationId).CertificateBasedAuthConfigurationById(&certificateBasedAuthConfigurationId).Get()
+import (
+	  "context"
+	  msgraphsdk "github.com/microsoftgraph/msgraph-beta-sdk-go"
+	  //other-imports
+)
+
+graphClient := msgraphsdk.NewGraphServiceClientWithCredentials(cred, scopes)
+
+
+
+certificateBasedAuthConfiguration, err := graphClient.Organization().ByOrganizationId("organization-id").CertificateBasedAuthConfiguration().ByCertificateBasedAuthConfigurationId("certificateBasedAuthConfiguration-id").Get(context.Background(), nil)
 
 
 ```

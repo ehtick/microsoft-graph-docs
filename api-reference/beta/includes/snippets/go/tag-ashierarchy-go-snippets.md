@@ -4,11 +4,18 @@ description: "Automatically generated file. DO NOT MODIFY"
 
 ```go
 
-//THE GO SDK IS IN PREVIEW. NON-PRODUCTION USE ONLY
-graphClient := msgraphsdk.NewGraphServiceClient(requestAdapter)
 
-caseId := "case-id"
-result, err := graphClient.Compliance().Ediscovery().CasesById(&caseId).Tags().AsHierarchy()(case-id).Get()
+import (
+	  "context"
+	  msgraphsdk "github.com/microsoftgraph/msgraph-beta-sdk-go"
+	  //other-imports
+)
+
+graphClient := msgraphsdk.NewGraphServiceClientWithCredentials(cred, scopes)
+
+
+
+microsoft.graph.ediscovery.asHierarchy(), err := graphClient.Compliance().Ediscovery().Cases().ByCaseId("case-id").Tags().MicrosoftGraphEdiscoveryAsHierarchy().Get(context.Background(), nil)
 
 
 ```

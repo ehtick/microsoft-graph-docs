@@ -4,14 +4,22 @@ description: "Automatically generated file. DO NOT MODIFY"
 
 ```go
 
-//THE GO SDK IS IN PREVIEW. NON-PRODUCTION USE ONLY
-graphClient := msgraphsdk.NewGraphServiceClient(requestAdapter)
 
-requestBody := msgraphsdk.NewIdentityUserFlowAttribute()
+import (
+	  "context"
+	  msgraphsdk "github.com/microsoftgraph/msgraph-sdk-go"
+	  graphmodels "github.com/microsoftgraph/msgraph-sdk-go/models"
+	  //other-imports
+)
+
+graphClient := msgraphsdk.NewGraphServiceClientWithCredentials(cred, scopes)
+
+
+requestBody := graphmodels.NewIdentityUserFlowAttribute()
 description := "Your new hobby"
-requestBody.SetDescription(&description)
-identityUserFlowAttributeId := "identityUserFlowAttribute-id"
-graphClient.Identity().UserFlowAttributesById(&identityUserFlowAttributeId).Patch(requestBody)
+requestBody.SetDescription(&description) 
+
+userFlowAttributes, err := graphClient.Identity().UserFlowAttributes().ByIdentityUserFlowAttributeId("identityUserFlowAttribute-id").Patch(context.Background(), requestBody, nil)
 
 
 ```

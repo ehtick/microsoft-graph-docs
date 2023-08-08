@@ -4,14 +4,22 @@ description: "Automatically generated file. DO NOT MODIFY"
 
 ```go
 
-//THE GO SDK IS IN PREVIEW. NON-PRODUCTION USE ONLY
-graphClient := msgraphsdk.NewGraphServiceClient(requestAdapter)
 
-requestBody := msgraphsdk.NewOAuth2PermissionGrant()
+import (
+	  "context"
+	  msgraphsdk "github.com/microsoftgraph/msgraph-sdk-go"
+	  graphmodels "github.com/microsoftgraph/msgraph-sdk-go/models"
+	  //other-imports
+)
+
+graphClient := msgraphsdk.NewGraphServiceClientWithCredentials(cred, scopes)
+
+
+requestBody := graphmodels.NewOAuth2PermissionGrant()
 scope := "User.ReadBasic.All Group.ReadWrite.All"
-requestBody.SetScope(&scope)
-oAuth2PermissionGrantId := "oAuth2PermissionGrant-id"
-graphClient.Oauth2PermissionGrantsById(&oAuth2PermissionGrantId).Patch(requestBody)
+requestBody.SetScope(&scope) 
+
+oauth2PermissionGrants, err := graphClient.Oauth2PermissionGrants().ByOAuth2PermissionGrantId("oAuth2PermissionGrant-id").Patch(context.Background(), requestBody, nil)
 
 
 ```

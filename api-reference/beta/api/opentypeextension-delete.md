@@ -1,13 +1,13 @@
 ---
-title: "Delete open extension"
-description: "Delete an open extension (openTypeExtension object) from the specified instance of a resource. "
+title: "Delete openTypeExtension"
+description: "Delete an open extension (openTypeExtension object) from the specified instance of a resource."
 ms.localizationpriority: medium
 author: "dkershaw10"
 doc_type: apiPageType
 ms.prod: "extensions"
 ---
 
-# Delete open extension
+# Delete openTypeExtension
 
 Namespace: microsoft.graph
 
@@ -17,7 +17,7 @@ Namespace: microsoft.graph
 
 Delete an open extension ([openTypeExtension](../resources/opentypeextension.md) object) from the specified instance of a resource. 
 
-See the table in the [Permissions](#permissions) section for the list of resources that support open extensions.
+For the list of resources that support open extensions, see the table in the [Permissions](#permissions) section.
 
 ## Permissions
 
@@ -46,30 +46,24 @@ navigation property of that instance to identify the extension, and do a `DELETE
 
 <!-- { "blockType": "ignored" } -->
 ```http
-DELETE /administrativeUnits/{Id}/extensions/{extensionId}
-DELETE /devices/{Id}/extensions/{extensionId}
-DELETE /users/{id|userPrincipalName}/events/{id}/extensions/{extensionId}
-DELETE /groups/{id}/extensions/{extensionId}
-DELETE /groups/{id}/events/{id}/extensions/{extensionId}
-DELETE /groups/{id}/threads/{id}/posts/{id}/extensions/{extensionId}
-DELETE /users/{id|userPrincipalName}/messages/{id}/extensions/{extensionId}
-DELETE /organization/{Id}/extensions/{extensionId}
-DELETE /users/{id|userPrincipalName}/contacts/{id}/extensions/{extensionId}
-DELETE /users/{id|userPrincipalName}/extensions/{extensionId}
-DELETE /users/me/todo/lists/{Id}/extensions/{extensionId}
-DELETE /users/me/todo/lists/{Id}/tasks/{Id}/extensions/{extensionId}
-DELETE /users/me/tasks/lists/{Id}/extensions/{extensionId}
-DELETE /users/me/tasks/lists/{Id}/tasks/{Id}/extensions/{extensionId}
+DELETE /administrativeUnits/{administrativeUnitId}/extensions/{extensionId}
+DELETE /devices/{deviceId}/extensions/{extensionId}
+DELETE /users/{userId|userPrincipalName}/events/{eventId}/extensions/{extensionId}
+DELETE /groups/{groupId}/extensions/{extensionId}
+DELETE /groups/{groupId}/events/{eventId}/extensions/{extensionId}
+DELETE /groups/{groupId}/threads/{threadIid}/posts/{postId}/extensions/{extensionId}
+DELETE /users/{userIid|userPrincipalName}/messages/{messageId}/extensions/{extensionId}
+DELETE /organization/{organizationId}/extensions/{extensionId}
+DELETE /users/{userId|userPrincipalName}/contacts/{contactId}/extensions/{extensionId}
+DELETE /users/{userId|userPrincipalName}/extensions/{extensionId}
+DELETE /users/me/todo/lists/{listId}/extensions/{extensionId}
+DELETE /users/me/todo/lists/{listId}/tasks/{taskId}/extensions/{extensionId}
+DELETE /users/me/tasks/lists/{listId}/extensions/{extensionId}
+DELETE /users/me/tasks/lists/{listId}/tasks/{taskId}/extensions/{extensionId}
 ```
 
 >**Note:** The above syntax shows some common ways to identify a resource instance, in order to delete an extension from it. 
 All other syntax that allows you to identify these resource instances supports deleting open extensions from them in a similar way.
-
-## Path parameters
-|**Parameter**|**Type**|**Description**|
-|:-----|:-----|:-----|
-|id|string|A unique identifier for an instance in the corresponding collection. Required.|
-|extensionId|string|This can be an extension name which is a unique text identifier for the extension, or a fully qualified name which concatenates the extension type and unique text identifier. The fully qualified name is returned in the `id` property when you create the extension. Required.|
 
 ## Request headers
 | Name       | Value |
@@ -84,43 +78,48 @@ Do not supply a request body for this method.
 If successful, this method returns `204 No Content` response code. It does not return anything in the response body.
 
 ## Example
-##### Request
+### Request
 The first example references an extension by its name and deletes the extension in the specified message.
 
 # [HTTP](#tab/http)
 <!-- {
   "blockType": "request",
-  "name": "delete_opentypeextension"
+  "name": "delete_opentypeextension",
+  "sampleKeys": ["AAMkAGE1M2IyNGNmLTI5MTktNDUyZi1iOTVl===", "Com.Contoso.Referral"]
 }-->
 ```http
 DELETE https://graph.microsoft.com/beta/me/messages/AAMkAGE1M2IyNGNmLTI5MTktNDUyZi1iOTVl===/extensions/Com.Contoso.Referral/
 ```
+
 # [C#](#tab/csharp)
 [!INCLUDE [sample-code](../includes/snippets/csharp/delete-opentypeextension-csharp-snippets.md)]
-[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
-
-# [JavaScript](#tab/javascript)
-[!INCLUDE [sample-code](../includes/snippets/javascript/delete-opentypeextension-javascript-snippets.md)]
-[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
-
-# [Objective-C](#tab/objc)
-[!INCLUDE [sample-code](../includes/snippets/objc/delete-opentypeextension-objc-snippets.md)]
-[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
-
-# [Java](#tab/java)
-[!INCLUDE [sample-code](../includes/snippets/java/delete-opentypeextension-java-snippets.md)]
 [!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
 
 # [Go](#tab/go)
 [!INCLUDE [sample-code](../includes/snippets/go/delete-opentypeextension-go-snippets.md)]
 [!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
 
+# [Java](#tab/java)
+[!INCLUDE [sample-code](../includes/snippets/java/delete-opentypeextension-java-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [JavaScript](#tab/javascript)
+[!INCLUDE [sample-code](../includes/snippets/javascript/delete-opentypeextension-javascript-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [PHP](#tab/php)
+[!INCLUDE [sample-code](../includes/snippets/php/delete-opentypeextension-php-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
 # [PowerShell](#tab/powershell)
 [!INCLUDE [sample-code](../includes/snippets/powershell/delete-opentypeextension-powershell-snippets.md)]
 [!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
 
----
+# [Python](#tab/python)
+[!INCLUDE [sample-code](../includes/snippets/python/delete-opentypeextension-python-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
 
+---
 
 The second example deletes an extension in the specified group event.
 
@@ -129,10 +128,8 @@ The second example deletes an extension in the specified group event.
 DELETE https://graph.microsoft.com/beta/groups/f5480dfd-7d77-4d0b-ba2e-3391953cc74a/events/AAMkADVlN17IsAAA=/extensions/Com.Contoso.Referral
 ```
 
- 
-
-##### Response
-Here is an example of the response.
+### Response
+The following is an example of the response.
 <!-- {
   "blockType": "response",
   "truncated": false
@@ -154,5 +151,3 @@ HTTP/1.1 204 No Content
   ]
 }
 -->
-
-

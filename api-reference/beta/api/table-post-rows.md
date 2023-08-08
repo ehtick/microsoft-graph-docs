@@ -74,7 +74,7 @@ Here is an example of the request.
 <!-- {
   "blockType": "request",
   "sampleKeys": ["01CCETFLK7GVZTZHSQNRD2AEI5XWTCU6FJ", "Table1"],
-  "name": "tablerowcollection_add_1"
+  "name": "insert_2_rows"
 }-->
 
 ```http
@@ -82,26 +82,31 @@ POST https://graph.microsoft.com/beta/me/drive/items/01CCETFLK7GVZTZHSQNRD2AEI5X
 Content-type: application/json
 
 {
-  "values": "[
+  "values": [
     [1, 2, 3],
     [4, 5, 6]
-  ]"
+  ]
 }
 ```
-# [JavaScript](#tab/javascript)
-[!INCLUDE [sample-code](../includes/snippets/javascript/tablerowcollection-add-1-javascript-snippets.md)]
-[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
 
 # [C#](#tab/csharp)
-[!INCLUDE [sample-code](../includes/snippets/csharp/tablerowcollection-add-1-csharp-snippets.md)]
+[!INCLUDE [sample-code](../includes/snippets/csharp/insert-2-rows-csharp-snippets.md)]
 [!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
 
-# [Objective-C](#tab/objc)
-[!INCLUDE [sample-code](../includes/snippets/objc/tablerowcollection-add-1-objc-snippets.md)]
+# [Go](#tab/go)
+[!INCLUDE [sample-code](../includes/snippets/go/insert-2-rows-go-snippets.md)]
 [!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
 
-# [Java](#tab/java)
-[!INCLUDE [sample-code](../includes/snippets/java/tablerowcollection-add-1-java-snippets.md)]
+# [JavaScript](#tab/javascript)
+[!INCLUDE [sample-code](../includes/snippets/javascript/insert-2-rows-javascript-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [PHP](#tab/php)
+[!INCLUDE [sample-code](../includes/snippets/php/insert-2-rows-php-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [Python](#tab/python)
+[!INCLUDE [sample-code](../includes/snippets/python/insert-2-rows-python-snippets.md)]
 [!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
 
 ---
@@ -123,7 +128,7 @@ Content-type: application/json
 
 {
   "index": 99,
-  "values": "[[1, 2, 3]]"
+  "values": [[1, 2, 3]]
 }
 ```
 
@@ -138,10 +143,12 @@ For async features, the user usually needs to issue 2-3 requests. This request, 
 Here is an example of the async request. Note that `202 Accepted` will only happen when the request takes a long time to respond. If the request is completed quickly, it will work like a regular sync request, falling back to [Example 1](#example-1-add-two-rows-to-a-table).
 
 
+
+# [HTTP](#tab/http)
 <!-- {
   "blockType": "request",
   "sampleKeys": ["01CCETFLK7GVZTZHSQNRD2AEI5XWTCU6FJ", "Table1"],
-  "name": "tablerowcollection_add_1"
+  "name": "tablerowcollection_add_sync_request"
 }-->
 
 ```http
@@ -151,12 +158,34 @@ Prefer: respond-async
 Workbook-Session-Id: {Workbook-Session-Id}
 
 {
-  "values": "[
+  "values": [
     [1, 2, 3],
     [4, 5, 6]
-  ]"
+  ]
 }
 ```
+
+# [C#](#tab/csharp)
+[!INCLUDE [sample-code](../includes/snippets/csharp/tablerowcollection-add-sync-request-csharp-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [Go](#tab/go)
+[!INCLUDE [sample-code](../includes/snippets/go/tablerowcollection-add-sync-request-go-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [JavaScript](#tab/javascript)
+[!INCLUDE [sample-code](../includes/snippets/javascript/tablerowcollection-add-sync-request-javascript-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [PHP](#tab/php)
+[!INCLUDE [sample-code](../includes/snippets/php/tablerowcollection-add-sync-request-php-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [Python](#tab/python)
+[!INCLUDE [sample-code](../includes/snippets/python/tablerowcollection-add-sync-request-python-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+---
 
 #### Response
 

@@ -4,12 +4,18 @@ description: "Automatically generated file. DO NOT MODIFY"
 
 ```go
 
-//THE GO SDK IS IN PREVIEW. NON-PRODUCTION USE ONLY
-graphClient := msgraphsdk.NewGraphServiceClient(requestAdapter)
 
-unifiedRbacResourceNamespaceId := "unifiedRbacResourceNamespace-id"
-unifiedRbacResourceActionId := "unifiedRbacResourceAction-id"
-result, err := graphClient.RoleManagement().Directory().ResourceNamespacesById(&unifiedRbacResourceNamespaceId).ResourceActionsById(&unifiedRbacResourceActionId).Get()
+import (
+	  "context"
+	  msgraphsdk "github.com/microsoftgraph/msgraph-beta-sdk-go"
+	  //other-imports
+)
+
+graphClient := msgraphsdk.NewGraphServiceClientWithCredentials(cred, scopes)
+
+
+
+resourceActions, err := graphClient.RoleManagement().Directory().ResourceNamespaces().ByUnifiedRbacResourceNamespaceId("unifiedRbacResourceNamespace-id").ResourceActions().ByUnifiedRbacResourceActionId("unifiedRbacResourceAction-id").Get(context.Background(), nil)
 
 
 ```

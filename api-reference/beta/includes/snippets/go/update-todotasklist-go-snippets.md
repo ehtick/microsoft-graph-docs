@@ -4,14 +4,22 @@ description: "Automatically generated file. DO NOT MODIFY"
 
 ```go
 
-//THE GO SDK IS IN PREVIEW. NON-PRODUCTION USE ONLY
-graphClient := msgraphsdk.NewGraphServiceClient(requestAdapter)
 
-requestBody := msgraphsdk.NewTodoTaskList()
+import (
+	  "context"
+	  msgraphsdk "github.com/microsoftgraph/msgraph-beta-sdk-go"
+	  graphmodels "github.com/microsoftgraph/msgraph-beta-sdk-go/models"
+	  //other-imports
+)
+
+graphClient := msgraphsdk.NewGraphServiceClientWithCredentials(cred, scopes)
+
+
+requestBody := graphmodels.NewTodoTaskList()
 displayName := "Vacation Plan"
-requestBody.SetDisplayName(&displayName)
-todoTaskListId := "todoTaskList-id"
-graphClient.Me().Todo().ListsById(&todoTaskListId).Patch(requestBody)
+requestBody.SetDisplayName(&displayName) 
+
+lists, err := graphClient.Me().Todo().Lists().ByTodoTaskListId("todoTaskList-id").Patch(context.Background(), requestBody, nil)
 
 
 ```

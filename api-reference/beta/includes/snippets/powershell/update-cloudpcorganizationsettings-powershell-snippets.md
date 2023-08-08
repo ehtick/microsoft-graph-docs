@@ -4,17 +4,18 @@ description: "Automatically generated file. DO NOT MODIFY"
 
 ```powershell
 
-Import-Module Microsoft.Graph.DeviceManagement.Administration
+Import-Module Microsoft.Graph.Beta.DeviceManagement.Administration
 
 $params = @{
 	"@odata.type" = "#microsoft.graph.cloudPcOrganizationSettings"
-	UserAccountType = "standardUser"
-	OsVersion = "windows11"
-	WindowsSettings = @{
-		Language = "en-US"
+	enableMEMAutoEnroll = $true
+	osVersion = "windows11"
+	userAccountType = "standardUser"
+	windowsSettings = @{
+		language = "en-US"
 	}
 }
 
-Update-MgDeviceManagementVirtualEndpointOrganizationSetting -BodyParameter $params
+Update-MgBetaDeviceManagementVirtualEndpointOrganizationSetting -BodyParameter $params
 
 ```

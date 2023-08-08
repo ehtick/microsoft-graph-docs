@@ -71,33 +71,36 @@ If successful, this function returns a `200 OK` response code and a [unifiedRole
 ``` http
 GET https://graph.microsoft.com/v1.0/roleManagement/directory/roleEligibilityScheduleRequests/filterByCurrentUser(on='principal')
 ```
+
 # [C#](#tab/csharp)
 [!INCLUDE [sample-code](../includes/snippets/csharp/unifiedroleeligibilityschedulerequestthisfilterbycurrentuser-csharp-snippets.md)]
 [!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
 
-# [JavaScript](#tab/javascript)
-[!INCLUDE [sample-code](../includes/snippets/javascript/unifiedroleeligibilityschedulerequestthisfilterbycurrentuser-javascript-snippets.md)]
-[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
-
-# [Objective-C](#tab/objc)
-[!INCLUDE [sample-code](../includes/snippets/objc/unifiedroleeligibilityschedulerequestthisfilterbycurrentuser-objc-snippets.md)]
-[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
-
-# [Java](#tab/java)
-[!INCLUDE [sample-code](../includes/snippets/java/unifiedroleeligibilityschedulerequestthisfilterbycurrentuser-java-snippets.md)]
+# [CLI](#tab/cli)
+[!INCLUDE [sample-code](../includes/snippets/cli/unifiedroleeligibilityschedulerequestthisfilterbycurrentuser-cli-snippets.md)]
 [!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
 
 # [Go](#tab/go)
 [!INCLUDE [sample-code](../includes/snippets/go/unifiedroleeligibilityschedulerequestthisfilterbycurrentuser-go-snippets.md)]
 [!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
 
-# [PowerShell](#tab/powershell)
-[!INCLUDE [sample-code](../includes/snippets/powershell/unifiedroleeligibilityschedulerequestthisfilterbycurrentuser-powershell-snippets.md)]
+# [Java](#tab/java)
+[!INCLUDE [sample-code](../includes/snippets/java/unifiedroleeligibilityschedulerequestthisfilterbycurrentuser-java-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [JavaScript](#tab/javascript)
+[!INCLUDE [sample-code](../includes/snippets/javascript/unifiedroleeligibilityschedulerequestthisfilterbycurrentuser-javascript-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [PHP](#tab/php)
+[!INCLUDE [sample-code](../includes/snippets/php/unifiedroleeligibilityschedulerequestthisfilterbycurrentuser-php-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# [Python](#tab/python)
+[!INCLUDE [sample-code](../includes/snippets/python/unifiedroleeligibilityschedulerequestthisfilterbycurrentuser-python-snippets.md)]
 [!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
 
 ---
-
-
 
 ### Response
 >**Note:** The response object shown here might be shortened for readability.

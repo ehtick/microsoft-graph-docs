@@ -49,7 +49,7 @@ If successful, this method returns a `204 No Content` response code and an empty
 
 ## Example
 
-##### Request
+### Request
 
 The following is an example of the request.
 
@@ -57,36 +57,25 @@ The following is an example of the request.
 # [HTTP](#tab/http)
 <!-- {
   "blockType": "request",
-  "name": "create_educationclass_from_educationschool_2"
+  "name": "create_educationclass_from_educationschool_2",
+  "sampleKeys": ["14012"]
 }-->
 
 ```http
 DELETE https://graph.microsoft.com/beta/education/classes/{id}/teachers/14012
 ```
-# [C#](#tab/csharp)
-[!INCLUDE [sample-code](../includes/snippets/csharp/create-educationclass-from-educationschool-2-csharp-snippets.md)]
+
+# [Java](#tab/java)
+[!INCLUDE [sample-code](../includes/snippets/java/create-educationclass-from-educationschool-2-java-snippets.md)]
 [!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
 
 # [JavaScript](#tab/javascript)
 [!INCLUDE [sample-code](../includes/snippets/javascript/create-educationclass-from-educationschool-2-javascript-snippets.md)]
 [!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
 
-# [Objective-C](#tab/objc)
-[!INCLUDE [sample-code](../includes/snippets/objc/create-educationclass-from-educationschool-2-objc-snippets.md)]
-[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
-
-# [Java](#tab/java)
-[!INCLUDE [sample-code](../includes/snippets/java/create-educationclass-from-educationschool-2-java-snippets.md)]
-[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
-
-# [Go](#tab/go)
-[!INCLUDE [sample-code](../includes/snippets/go/create-educationclass-from-educationschool-2-go-snippets.md)]
-[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
-
 ---
 
-
-##### Response
+### Response
 
 The following is an example of the response. 
 

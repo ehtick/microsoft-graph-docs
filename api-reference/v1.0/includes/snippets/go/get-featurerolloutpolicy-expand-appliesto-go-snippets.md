@@ -4,17 +4,25 @@ description: "Automatically generated file. DO NOT MODIFY"
 
 ```go
 
-//THE GO SDK IS IN PREVIEW. NON-PRODUCTION USE ONLY
-graphClient := msgraphsdk.NewGraphServiceClient(requestAdapter)
 
-requestParameters := &msgraphsdk.FeatureRolloutPolicyRequestBuilderGetQueryParameters{
-	Expand: "appliesTo",
+import (
+	  "context"
+	  msgraphsdk "github.com/microsoftgraph/msgraph-sdk-go"
+	  graphpolicies "github.com/microsoftgraph/msgraph-sdk-go/policies"
+	  //other-imports
+)
+
+graphClient := msgraphsdk.NewGraphServiceClientWithCredentials(cred, scopes)
+
+
+requestParameters := &graphpolicies.PoliciesFeatureRolloutPolicieItemRequestBuilderGetQueryParameters{
+	Expand: [] string {"appliesTo"},
 }
-options := &msgraphsdk.FeatureRolloutPolicyRequestBuilderGetRequestConfiguration{
+configuration := &graphpolicies.PoliciesFeatureRolloutPolicieItemRequestBuilderGetRequestConfiguration{
 	QueryParameters: requestParameters,
 }
-featureRolloutPolicyId := "featureRolloutPolicy-id"
-result, err := graphClient.Policies().FeatureRolloutPoliciesById(&featureRolloutPolicyId).GetWithRequestConfigurationAndResponseHandler(options, nil)
+
+featureRolloutPolicies, err := graphClient.Policies().FeatureRolloutPolicies().ByFeatureRolloutPolicyId("featureRolloutPolicy-id").Get(context.Background(), configuration)
 
 
 ```

@@ -4,22 +4,26 @@ description: "Automatically generated file. DO NOT MODIFY"
 
 ```go
 
-//THE GO SDK IS IN PREVIEW. NON-PRODUCTION USE ONLY
-graphClient := msgraphsdk.NewGraphServiceClient(requestAdapter)
 
-requestBody := msgraphsdk.NewEducationSubmissionResource()
-resource := msgraphsdk.NewEducationResource()
-requestBody.SetResource(resource)
+import (
+	  "context"
+	  msgraphsdk "github.com/microsoftgraph/msgraph-beta-sdk-go"
+	  graphmodels "github.com/microsoftgraph/msgraph-beta-sdk-go/models"
+	  //other-imports
+)
+
+graphClient := msgraphsdk.NewGraphServiceClientWithCredentials(cred, scopes)
+
+
+requestBody := graphmodels.NewEducationSubmissionResource()
+resource := graphmodels.NewEducationWordResource()
 displayName := "Report.docx"
-resource.SetDisplayName(&displayName)
-resource.SetAdditionalData(map[string]interface{}{
-	"@odata.type": "microsoft.graph.educationWordResource",
-	"fileUrl": "https://graph.microsoft.com/beta/drives/b!DPA6q59Tw0mtgmyXRUmrQRqBZTesG-lMkl1cBmvvMeUEWrOk89nKRpUEr4ZhNYBc/items/016XPCQEELISJB7NVNVBAK7V4UIF6Q27U2",
-}
-educationClassId := "educationClass-id"
-educationAssignmentId := "educationAssignment-id"
-educationSubmissionId := "educationSubmission-id"
-result, err := graphClient.Education().ClassesById(&educationClassId).AssignmentsById(&educationAssignmentId).SubmissionsById(&educationSubmissionId).Resources().Post(requestBody)
+resource.SetDisplayName(&displayName) 
+fileUrl := "https://graph.microsoft.com/beta/drives/b!DPA6q59Tw0mtgmyXRUmrQRqBZTesG-lMkl1cBmvvMeUEWrOk89nKRpUEr4ZhNYBc/items/016XPCQEELISJB7NVNVBAK7V4UIF6Q27U2"
+resource.SetFileUrl(&fileUrl) 
+requestBody.SetResource(resource)
+
+resources, err := graphClient.Education().Classes().ByEducationClassId("educationClass-id").Assignments().ByEducationAssignmentId("educationAssignment-id").Submissions().ByEducationSubmissionId("educationSubmission-id").Resources().Post(context.Background(), requestBody, nil)
 
 
 ```

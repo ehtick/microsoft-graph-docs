@@ -4,17 +4,25 @@ description: "Automatically generated file. DO NOT MODIFY"
 
 ```go
 
-//THE GO SDK IS IN PREVIEW. NON-PRODUCTION USE ONLY
-graphClient := msgraphsdk.NewGraphServiceClient(requestAdapter)
 
-requestParameters := &msgraphsdk.ServiceHealthRequestBuilderGetQueryParameters{
-	Expand: "issues",
+import (
+	  "context"
+	  msgraphsdk "github.com/microsoftgraph/msgraph-beta-sdk-go"
+	  graphadmin "github.com/microsoftgraph/msgraph-beta-sdk-go/admin"
+	  //other-imports
+)
+
+graphClient := msgraphsdk.NewGraphServiceClientWithCredentials(cred, scopes)
+
+
+requestParameters := &graphadmin.AdminServiceAnnouncementHealthOverviewItemRequestBuilderGetQueryParameters{
+	Expand: [] string {"issues"},
 }
-options := &msgraphsdk.ServiceHealthRequestBuilderGetRequestConfiguration{
+configuration := &graphadmin.AdminServiceAnnouncementHealthOverviewItemRequestBuilderGetRequestConfiguration{
 	QueryParameters: requestParameters,
 }
-serviceHealthId := "serviceHealth-id"
-result, err := graphClient.Admin().ServiceAnnouncement().HealthOverviewsById(&serviceHealthId).GetWithRequestConfigurationAndResponseHandler(options, nil)
+
+healthOverviews, err := graphClient.Admin().ServiceAnnouncement().HealthOverviews().ByServiceHealthId("serviceHealth-id").Get(context.Background(), configuration)
 
 
 ```

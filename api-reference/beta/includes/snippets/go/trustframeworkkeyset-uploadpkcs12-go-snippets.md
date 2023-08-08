@@ -4,16 +4,24 @@ description: "Automatically generated file. DO NOT MODIFY"
 
 ```go
 
-//THE GO SDK IS IN PREVIEW. NON-PRODUCTION USE ONLY
-graphClient := msgraphsdk.NewGraphServiceClient(requestAdapter)
 
-requestBody := msgraphsdk.New()
+import (
+	  "context"
+	  msgraphsdk "github.com/microsoftgraph/msgraph-beta-sdk-go"
+	  graphtrustframework "github.com/microsoftgraph/msgraph-beta-sdk-go/trustframework"
+	  //other-imports
+)
+
+graphClient := msgraphsdk.NewGraphServiceClientWithCredentials(cred, scopes)
+
+
+requestBody := graphtrustframework.NewUploadPkcs12PostRequestBody()
 key := "Base64-encoded-pfx-content"
-requestBody.SetKey(&key)
+requestBody.SetKey(&key) 
 password := "password-value"
-requestBody.SetPassword(&password)
-trustFrameworkKeySetId := "trustFrameworkKeySet-id"
-result, err := graphClient.TrustFramework().KeySetsById(&trustFrameworkKeySetId).UploadPkcs12(trustFrameworkKeySet-id).Post(requestBody)
+requestBody.SetPassword(&password) 
+
+uploadPkcs12, err := graphClient.TrustFramework().KeySets().ByTrustFrameworkKeySetId("trustFrameworkKeySet-id").UploadPkcs12().Post(context.Background(), requestBody, nil)
 
 
 ```

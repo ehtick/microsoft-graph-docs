@@ -4,11 +4,18 @@ description: "Automatically generated file. DO NOT MODIFY"
 
 ```go
 
-//THE GO SDK IS IN PREVIEW. NON-PRODUCTION USE ONLY
-graphClient := msgraphsdk.NewGraphServiceClient(requestAdapter)
 
-tiIndicatorId := "tiIndicator-id"
-result, err := graphClient.Security().TiIndicatorsById(&tiIndicatorId).Get()
+import (
+	  "context"
+	  msgraphsdk "github.com/microsoftgraph/msgraph-beta-sdk-go"
+	  //other-imports
+)
+
+graphClient := msgraphsdk.NewGraphServiceClientWithCredentials(cred, scopes)
+
+
+
+tiIndicators, err := graphClient.Security().TiIndicators().ByTiIndicatorId("tiIndicator-id").Get(context.Background(), nil)
 
 
 ```

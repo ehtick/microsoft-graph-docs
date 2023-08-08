@@ -20,9 +20,9 @@ One of the following permissions is required to call this API. To learn more, in
 
 |Permission type      | Permissions (from least to most privileged)              |
 |:--------------------|:---------------------------------------------------------|
-|Delegated (work or school account) |  TeamsTab.ReadWriteForTeam, TeamsTab.ReadWrite.All, Group.ReadWrite.All**, Directory.ReadWrite.All** |
+|Delegated (work or school account) | TeamsTab.ReadWriteSelfForTeam , TeamsTab.ReadWriteForTeam, TeamsTab.ReadWrite.All, Group.ReadWrite.All**, Directory.ReadWrite.All** |
 |Delegated (personal Microsoft account) | Not supported.    |
-|Application | TeamsTab.Delete.Group*, TeamsTab.ReadWrite.Group*, TeamsTab.ReadWriteForTeam.All, TeamsTab.ReadWrite.All, Group.ReadWrite.All**, Directory.ReadWrite.All** |
+|Application | TeamsTab.Delete.Group*, TeamsTab.ReadWrite.Group*, TeamsTab.ReadWriteSelfForTeam.All, TeamsTab.ReadWriteForTeam.All, TeamsTab.ReadWrite.All, Group.ReadWrite.All**, Directory.ReadWrite.All** |
 
 [!INCLUDE [teamwork-permissions-note](../../../includes/teamwork-permissions-note.md)]
 
@@ -76,4 +76,6 @@ HTTP/1.1 204 No Content
 }
 -->
 
+## See also
 
+[Microsoft Graph service-specific throttling limits](/graph/throttling-limits#microsoft-teams-service-limits)

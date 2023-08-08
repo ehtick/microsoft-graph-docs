@@ -4,14 +4,22 @@ description: "Automatically generated file. DO NOT MODIFY"
 
 ```go
 
-//THE GO SDK IS IN PREVIEW. NON-PRODUCTION USE ONLY
-graphClient := msgraphsdk.NewGraphServiceClient(requestAdapter)
 
-requestBody := msgraphsdk.NewEducationCategory()
+import (
+	  "context"
+	  msgraphsdk "github.com/microsoftgraph/msgraph-sdk-go"
+	  graphmodels "github.com/microsoftgraph/msgraph-sdk-go/models"
+	  //other-imports
+)
+
+graphClient := msgraphsdk.NewGraphServiceClientWithCredentials(cred, scopes)
+
+
+requestBody := graphmodels.NewEducationCategory()
 displayName := "Quizzes"
-requestBody.SetDisplayName(&displayName)
-educationClassId := "educationClass-id"
-result, err := graphClient.Education().ClassesById(&educationClassId).AssignmentCategories().Post(requestBody)
+requestBody.SetDisplayName(&displayName) 
+
+assignmentCategories, err := graphClient.Education().Classes().ByEducationClassId("educationClass-id").AssignmentCategories().Post(context.Background(), requestBody, nil)
 
 
 ```
